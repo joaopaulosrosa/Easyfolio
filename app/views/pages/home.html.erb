@@ -1,11 +1,14 @@
+<%= content_for(:navbar_class, "navbar-home") %>
+<%#= inject transparenci only in nav bar home%>
+
 <div class="banner">
   <div class="container">
     <h1><strong>Crypto Portfolio Management </strong></h1>
     <p>Set a strategy and keep good track of your crypto investments.</p>
-    <a class="btn btn-flat" href="#">Login</a>
+    <%= link_to 'Start Now', new_user_registration_path, class: "btn btn-flat btn-primary" %>
+  </div>
   </div>
 </div>
-
 <div class="container">
   <p>Set a strategy and keep good track of your crypto investments with a friendly
   and intuitive interface, with all the information you need in only one place.
