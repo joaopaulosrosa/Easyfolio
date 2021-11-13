@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
   get 'watchlist', to: 'watchlists#show'
-  resources :watchlists, only: [:show, :create]
+  resources :watchlists, only: [:show, :create] do
+    resources :coin_bookmarks, only: [:new, :create, :destroy]
+  end
 end
