@@ -2,26 +2,23 @@
   background-image: linear-gradient(rgba(9, 15, 24, 0.5), rgba(60, 70, 85, 0.438)), url(img_banner.png);
   background-size: cover;
   background-position: center;
-  padding: 90px 50px;
+  padding: 120px 50px;
   color: white;
   justify-content: space-around;
+  text-align: center;
   h1 {
   color:white;
   font-weight: bold;
   font-size: 45px;
   }
-  .p {
+  p {
   color: white;
-  font-size: 40px;
+  font-size: 12px;
   font-weight: lighter;
   margin-bottom: 50px;
   }
   .btn {
-  padding: 15px 50px;
+  padding: 10px 20px;
+  border-radius: 50px;
   }
-}
-.container {
-  width: 900px;
-  margin: 30px;
-  margin-top: 100px;
 }
