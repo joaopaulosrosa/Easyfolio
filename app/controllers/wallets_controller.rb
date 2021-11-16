@@ -1,15 +1,12 @@
 class WalletsController < ApplicationController
+before_action :get_wallet, only: [:show, :destroy]
 
   def show
     authorize @wallet
   end
 
   def index
-    if params[:query].present?
-      @wallet = wallet.search_by_name_and_description(params[:query])
-    else
-      @wallet = policy_scope(wallet)
-    end
+    @wallets = policy_scope(Wallet)
   end
 
   def new
@@ -20,9 +17,9 @@ class WalletsController < ApplicationController
   def create
     @wallet = Wallet.new(wallet_params)
     @wallet.user = current_user
-    authorize @nft
+    authorize @wallet
     if @wallet.save
-      redirect_to @wallet, notice: 'Wallet has been created'
+      redirect_to user_wallet_path(current_user, @wallet), notice: 'Wallet has been created'
     else
       render :new
     end
@@ -30,8 +27,8 @@ class WalletsController < ApplicationController
 
   def destroy
     @wallet.destroy
-    authorize @nft
-    redirect_to wallets_path
+    authorize @wallet
+    redirect_to user_wallet_path
   end
 
   private
@@ -39,4 +36,9 @@ class WalletsController < ApplicationController
   def get_wallet
     @wallet = Wallet.find(params[:id])
   end
+
+  def wallet_params
+    params.require(:wallet).permit(:name)
+  end
+
 end
