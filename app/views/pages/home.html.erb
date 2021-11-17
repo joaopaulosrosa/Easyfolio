@@ -1,11 +1,13 @@
-<%= content_for(:navbar_class, "navbar-home") %>
-<%#= inject transparenci only in nav bar home%>
+<%= render 'shared/navbar_home' %>
+
 
 <div class="banner">
-  <div class="container">
-    <h1><strong>Crypto Portfolio Management </strong></h1>
-    <p>Set a strategy and keep good track of your crypto investments.</p>
-    <%= link_to 'Start Now', new_user_registration_path, class: "btn btn-flat btn-primary" %>
+  <div class="container-hidden">
+    <div class="container-text">
+      <h1><strong>Crypto Portfolio Management </strong></h1>
+      <p>Set a strategy and keep good track of your crypto investments.</p>
+      <%= link_to 'Start Now', new_user_registration_path, class: "btn btn-start" %>
+    </div>
   </div>
 </div>
 
@@ -16,15 +18,7 @@
     </p>
   </div>
 </div>
- <!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="links">
-      <a href="#"><i class="fab fa-github-square"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
-    <p>This website was coded with Ruby <i class="fas fa-gem"></i> tecnology.</p>
-    <p>© 2021 EASYFOLIO All rights reserved.</p>
-  </div>
-</footer>
+
+<!-- Footer -->
+
+<%= render 'shared/footer' %>
