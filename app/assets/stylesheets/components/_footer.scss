@@ -1,0 +1,18 @@
+.footer {
+  background-color:  rgb(25, 4, 58);;
+  text-align: center;
+  padding: 16px;
+  a {
+    font-size: 30px;
+    color: $blue;
+    margin: 0 8px;
+  }
+  p {
+    color: $light-gray;
+    opacity: 0.5;
+    margin-top: 12px;
+  }
+  .fas {
+    color: rgb(245, 24, 24);
+  }
+}

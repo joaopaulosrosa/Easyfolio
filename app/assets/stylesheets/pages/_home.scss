@@ -1,1 +1,13 @@
 // Specific CSS for your home-page
+.navbar-home {
+  transition: all 0.3s ease;
+  background: transparent;
+  box-shadow: none;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+  .navbar-link {
+    color: white;
+    font-weight: bold;
+  }
+}

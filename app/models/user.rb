@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :wallets, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one :watchlist
 end
