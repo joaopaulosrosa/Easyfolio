@@ -1,5 +1,8 @@
 <h1>Watchlist</h1>
 <%= link_to 'Add coins', new_watchlist_coin_bookmark_path(@watchlist), class: 'btn btn-secondary' %>
-<% @watchlist.coin_bookmarks.each do |coin| %>
-  <p><%= coin.coin_ticker %> - <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, coin), method: :delete %></p>
+
+<table>
+  <% @tickers.each do |ticker| %>
+    <li><%= ticker %> - <%= @cryptowatch.get_current_price("binance-us", ticker).price %> <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %></li>
 <% end %>
+</table>
