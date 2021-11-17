@@ -2,6 +2,8 @@ class WalletsController < ApplicationController
 before_action :get_wallet, only: [:show, :destroy]
 
   def show
+    @cryptowatch = CoinTools::Cryptowatch.new
+    @assets = @wallet.assets
     authorize @wallet
   end
 
