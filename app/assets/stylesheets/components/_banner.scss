@@ -2,10 +2,22 @@
   background-image: linear-gradient(rgba(9, 15, 24, 0.5), rgba(60, 70, 85, 0.438)), url(img_banner.png);
   background-size: cover;
   background-position: center;
-  padding: 120px 50px;
+  padding: 140px 50px;
   color: white;
   justify-content: space-around;
-  text-align: center;
+}
+.container-hidden {
+  background-size: cover;
+  background-position: center;
+  padding: 140px 50px;
+  color: white;
+  justify-content: space-around;
+  position: relative;
+}
+.container-text{
+  position: absolute;
+  bottom: -155px;
+  left: 250px;
   h1 {
   color:white;
   font-weight: bold;
@@ -13,12 +25,18 @@
   }
   p {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: lighter;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   }
-  .btn {
-  padding: 10px 20px;
-  border-radius: 50px;
+  .btn-start {
+  padding: 10px 40px;
+  border-radius: 6px;
+  background-color: rgb(65, 69, 71);
+  color: white;
+  box-shadow: white;
   }
+  .btn-start:hover {
+  box-shadow: 2px 15px 25px rgba(255, 255, 255, 0.507);
+}
 }
