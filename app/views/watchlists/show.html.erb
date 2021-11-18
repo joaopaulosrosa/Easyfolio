@@ -3,6 +3,9 @@
 
 <table>
   <% @tickers.each do |ticker| %>
-    <li><%= ticker %> - <%= @cryptowatch.get_current_price("binance-us", ticker).price %> <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %></li>
+    <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
+    <%  %>
+
+    <p><%= coin[:id] %>: price - <%= coin[:current_price] %> | market cap - <%= coin[:market_cap] %> | today's variation - <%= coin[:price_change_percentage_24h] %> <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %></p>
 <% end %>
 </table>
