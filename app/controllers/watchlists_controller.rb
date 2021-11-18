@@ -11,6 +11,8 @@ class WatchlistsController < ApplicationController
     @watchlist.coin_bookmarks.pluck(:coin_ticker).map{|coin| "#{coin}" }
   end
 
+  private
+
   def call_coin_gecko
     url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
     data = HTTParty.get(url).body
