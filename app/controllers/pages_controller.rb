@@ -4,9 +4,11 @@ class PagesController < ApplicationController
   def home
   end
 
-  def about
-  end
-
-  def contact
+  def explore
+    @cryptowatch = CoinTools::Cryptowatch.new
+    if params[:query].present?
+      @coin = @cryptowatch.get_current_price("binance-us", "#{params[:query]}usd")
+      @ticker = params[:query]
+    end
   end
 end
