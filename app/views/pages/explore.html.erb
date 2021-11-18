@@ -6,7 +6,7 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
-
-<% if @coin %>
-  <h1> <%= @ticker %> <%= @coin.price %></h1>
-<% end %>
+<div class="d-flex">
+  <img class="coin-logo" src="<%= @coin[:image] if @coin %>" alt="">
+  <p><%= @coin[:id] if @coin %> : price - <%= @coin[:current_price] if @coin %> | market cap - <%= @coin[:market_cap] if @coin %> | today's variation <%= @coin[:price_change_percentage_24h] if @coin %>%</p>
+</div>
