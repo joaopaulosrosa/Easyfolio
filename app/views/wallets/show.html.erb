@@ -1,5 +1,11 @@
 <%= link_to 'Delete', user_wallet_path(current_user, @wallet), method: :delete %>
 <table>
+<% total = [] %>
 <% @assets.each do |asset| %>
-  <li><%= asset.coin_ticker %> - <%= @cryptowatch.get_current_price("binance-us", "#{asset.coin_ticker}usd").price %> - <%= asset.amount %> - $ <%= asset.amount*@cryptowatch.get_current_price("binance-us", "#{asset.coin_ticker}usd").price %></li>
+  <% coin = @data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym) %>
+  <% total.push((asset.amount*coin[:current_price]).round(2)) %>
+
+  <p><%= coin[:id] %>: total(<%= coin[:symbol] %>) - <%= asset.amount %> | total(U$)<%= (asset.amount*coin[:current_price]).round(2) %> | current price - <%= coin[:current_price] %></p>
 <% end %>
+
+<h2>wallet's current value(U$): <%= total.sum %></h2>
