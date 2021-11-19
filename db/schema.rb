@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_16_232852) do
+=======
+ActiveRecord::Schema.define(version: 2021_11_17_155541) do
+>>>>>>> fc4a376a54719646e20684a450995f3feed15189
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.float "amount"
+    t.string "coin_ticker"
+    t.bigint "wallet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["wallet_id"], name: "index_assets_on_wallet_id"
+  end
 
   create_table "coin_bookmarks", force: :cascade do |t|
     t.bigint "watchlist_id", null: false
@@ -50,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_232852) do
     t.index ["user_id"], name: "index_watchlists_on_user_id"
   end
 
+  add_foreign_key "assets", "wallets"
   add_foreign_key "coin_bookmarks", "watchlists"
   add_foreign_key "wallets", "users"
   add_foreign_key "watchlists", "users"

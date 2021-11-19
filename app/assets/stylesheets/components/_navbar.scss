@@ -1,0 +1,68 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: rgb(40, 5, 97);
+  transition: all 0.3s ease;
+  display: flex;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+  color: beige;
+  list-style: none;
+
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+  list-style: none;
+}
+
+.btn-home {
+  display: flex;
+  color: white;
+  font-weight: bold;
+  list-style: none;
+  float: right;
+}
+.btn-home:hover {
+  color: rgb(236, 220, 75);
+}
+
+.header-logo a{
+  color: rgb(185, 165, 165);
+  font-size: 24px;
+  list-style: none;
+}
+.navbar-home {
+  position: absolute;
+  transition: all 0.3s ease;
+  background: transparent;
+  box-shadow: none;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar-brand {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}

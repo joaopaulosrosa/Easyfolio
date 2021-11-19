@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%# <%= content_for(:navbar_class, "navbar-home") %>
 <%#= inject transparenci only in nav bar home%>
 
@@ -1275,3 +1276,29 @@
 </body>
 
 </html>
+=======
+<%= render 'shared/navbar_home' %>
+
+
+<div class="banner">
+  <div class="container-hidden">
+    <div class="container-text">
+      <h1><strong>Crypto Portfolio Management </strong></h1>
+      <p>Set a strategy and keep good track of your crypto investments.</p>
+      <%= link_to 'Start Now', new_user_registration_path, class: "btn btn-start" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center">
+    <p>Set a strategy and keep good track of your crypto investments with a friendly
+    and intuitive interface, with all the information you need in only one place.
+    </p>
+  </div>
+</div>
+
+<!-- Footer -->
+
+<%= render 'shared/footer' %>
+>>>>>>> fc4a376a54719646e20684a450995f3feed15189

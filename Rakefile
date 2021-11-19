@@ -3,4 +3,8 @@
 
 require_relative 'config/application'
 
+require 'httparty'
+
+require 'json'
+
 Rails.application.load_tasks

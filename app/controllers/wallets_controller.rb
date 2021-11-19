@@ -2,6 +2,9 @@ class WalletsController < ApplicationController
 before_action :get_wallet, only: [:show, :destroy]
 
   def show
+    @cryptowatch = CoinTools::Cryptowatch.new
+    @assets = @wallet.assets
+    @data = call_coin_gecko
     authorize @wallet
   end
 
@@ -35,6 +38,12 @@ before_action :get_wallet, only: [:show, :destroy]
 
   def get_wallet
     @wallet = Wallet.find(params[:id])
+  end
+
+  def call_coin_gecko
+    url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
+    data = HTTParty.get(url).body
+    JSON.parse(data)
   end
 
   def wallet_params
