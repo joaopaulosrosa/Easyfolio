@@ -8,4 +8,11 @@
     <p>This website was coded with Ruby <i class="fas fa-gem"></i> tecnology.</p>
     <p>© 2021 EASYFOLIO All rights reserved.</p>
   </div>
+  <div class="col-lg-4">
+    <div id="map"
+      style="width: 50%; height: 300px; margin: 30px auto; overflow: hidden;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </footer>

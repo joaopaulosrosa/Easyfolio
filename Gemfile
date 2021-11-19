@@ -63,6 +63,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pundit'
 
+# API to select coins information
 gem "httparty"
 
 gem 'cointools'
+
+# creating a Map
+gem 'geocoder'
