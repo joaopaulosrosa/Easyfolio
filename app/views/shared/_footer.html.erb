@@ -1,18 +1,34 @@
-<footer class="footer">
+<footer class="footer-home">
   <div class="container">
-    <div class="links">
-      <a href="#"><i class="fab fa-github-square"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
+    <div class="d-flex justify-content-around align-items-center">
+      <div class="col-lg-4 mt-2 mt-lg-0">
+        <div id="map"
+          style="width: 50%; height: 150px; margin: 10px auto; overflow: hidden;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <div class="info-box t-2">
+          <h3><i class="fas fa-map-marked-alt"></i>  Address</h3>
+          </p>Al Badaa Street,<br>
+            Dubai, Nº 5322</p>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="links">
+          <a href="#"><i class="fab fa-github-square"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <p><i class="fas fa-mobile-alt"></i><strong> Call Us</strong><br>+1 5589 55488 55 </p>
+        <p><i class="far fa-envelope"></i><strong> Email Us</strong><br>contact@example.com </p>
+        <div class="icon">
+          <p>This website was coded with Ruby <i class="fas fa-gem"></i> tecnology.</p>
+        </div>
+      </div>
     </div>
-    <p>This website was coded with Ruby <i class="fas fa-gem"></i> tecnology.</p>
-    <p>© 2021 EASYFOLIO All rights reserved.</p>
-  </div>
-  <div class="col-lg-4">
-    <div id="map"
-      style="width: 50%; height: 300px; margin: 30px auto; overflow: hidden;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="rigths">
+      <p>© 2021 EASYFOLIO All rights reserved.</p>
     </div>
   </div>
 </footer>
