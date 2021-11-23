@@ -66,3 +66,7 @@ gem 'pundit'
 gem "httparty"
 
 gem 'cointools'
+
+gem 'open-uri'
+
+gem 'nokogiri'

@@ -24,11 +24,15 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { LoadChart } from '../components/map'
+import { LoadBallance } from '../components/ballance'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  LoadChart();
+  LoadBallance()
   // Call your functions here, e.g:
   // initSelect2();
 });

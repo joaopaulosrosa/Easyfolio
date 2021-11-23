@@ -12,6 +12,7 @@ class PagesController < ApplicationController
       data_json = JSON.parse(data)
       response = data_json.select{ |key| key["symbol"] == params[:query] }.first
       @coin = response.transform_keys(&:to_sym)
+      @btc = get_btc
     end
   end
 
@@ -29,6 +30,14 @@ class PagesController < ApplicationController
 
   def get_wallet
     @wallets = current_user.wallets
+  end
+
+  def get_btc
+    url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
+    data = HTTParty.get(url).body
+    data_json = JSON.parse(data)
+    response = data_json.select{ |key| key["symbol"] == 'btc' }.first
+    response.transform_keys(&:to_sym)
   end
 
   # def explore
