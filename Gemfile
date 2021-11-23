@@ -68,5 +68,8 @@ gem "httparty"
 
 gem 'cointools'
 
+gem 'open-uri'
+
+gem 'nokogiri'
 # creating a Map
 gem 'geocoder'

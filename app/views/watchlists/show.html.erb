@@ -1,11 +1,41 @@
-<h1>Watchlist</h1>
-<%= link_to 'Add coins', new_watchlist_coin_bookmark_path(@watchlist), class: 'btn btn-secondary' %>
 
-<table>
-  <% @tickers.each do |ticker| %>
-    <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
-    <%  %>
+<div class="col-12">
+  <div class="card recent-sales">
+    <div class="card-body">
+      <h5 class="card-title"> Coins <span>| owned</span></h5>
+        <%= simple_form_for [@watchlist, @coin_bookmark] do |f| %>
+          <%= f.input :coin_ticker %>
+          <%= f.submit %>
+        <% end %>
 
-    <p><%= coin[:id] %>: price - <%= coin[:current_price] %> | market cap - <%= coin[:market_cap] %> | today's variation - <%= coin[:price_change_percentage_24h] %> <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %></p>
-<% end %>
-</table>
+      <table class="table table-borderless datatable">
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Coin</th>
+            <th scope="col">Market Cap</th>
+            <th scope="col">Curren Price</th>
+            <th scope="col">24h %</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @tickers.each do |ticker| %>
+            <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
+            <tr>
+              <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
+              <td><%= coin[:name] %></td>
+              <td><%= coin[:market_cap] %></td>
+              <td><%= coin[:current_price].round(2) %></td>
+              <td><%= coin[:price_change_percentage_24h] %>%</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<%# <%= link_to 'Add coins', new_watchlist_coin_bookmark_path(@watchlist), class: 'btn btn-secondary' %>
+<%# <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %>
