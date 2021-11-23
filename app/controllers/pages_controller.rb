@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   before_action :get_wallet, only: [:dashboard]
 
   def home
+    @markers = [{
+      lat: 25.21637624420233,
+      lng: 55.275519286827105
+    }]
   end
 
   def explore
