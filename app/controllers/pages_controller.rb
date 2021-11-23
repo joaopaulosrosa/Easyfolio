@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :about, :contact ]
+  before_action :get_wallet, only: [:dashboard]
 
   def home
   end
@@ -12,6 +13,22 @@ class PagesController < ApplicationController
       response = data_json.select{ |key| key["symbol"] == params[:query] }.first
       @coin = response.transform_keys(&:to_sym)
     end
+  end
+
+  def dashboard
+    @data = call_coin_gecko
+  end
+
+  private
+
+  def call_coin_gecko
+    url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
+    data = HTTParty.get(url).body
+    JSON.parse(data)
+  end
+
+  def get_wallet
+    @wallets = current_user.wallets
   end
 
   # def explore

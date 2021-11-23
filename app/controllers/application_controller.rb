@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  layout "landingpage", only: :home
+
 
   include Pundit
 
