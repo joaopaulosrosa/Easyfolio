@@ -38,13 +38,15 @@
 
 
     <div class="pagetitle">
-      <h1><%= @wallets.first.name %>'s wallet </h1>
+      <h1>Dashboard</h1>
       <nav>
-        <ol class="breadcrumb">
-          <% @wallets.each do |wallet| %>
-            <li class="breadcrumb-item"><a href="index.html"><%= wallet.name %></a></li>
-          <% end %>
-        </ol>
+        <% if !@wallets.empty? %>
+          <ol class="breadcrumb">
+            <% @wallets.each do |wallet| %>
+              <li class="breadcrumb-item"><a href="index.html"><%= wallet.name %></a></li>
+            <% end %>
+          </ol>
+        <% end %>
       </nav>
     </div><!-- End Page Title -->
 
@@ -53,142 +55,155 @@
 
         <!-- Left side columns -->
         <div class="col-lg-8">
-          <div class="row">
+          <% if !@wallets.empty? %>
+            <div class="row">
 
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales">
+              <!-- Recent Sales -->
+              <div class="col-12">
+                <div class="card recent-sales">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul>
+                  </div>
 
-                <div class="card-body">
-                  <h5 class="card-title"> Coins <span>| owned</span></h5>
+                  <div class="card-body">
+                    <h5 class="card-title"> Coins <span>| owned</span></h5>
 
-                  <table class="table table-borderless datatable">
+                    <table class="table table-borderless datatable">
 
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Coin</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Curren Price</th>
-                        <th scope="col">Value (U$)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% total = [] %>
-                      <% wallet = @wallets.first %>
-                      <% assets = wallet.assets %>
-                      <% assets.each do |asset| %>
-                        <% coin = coin(@data, asset) %>
-                        <% total.push((asset.amount*coin[:current_price]).round(2)) %>
+                      <thead>
                         <tr>
-                          <th scope="row"><a href="#"><%= asset.coin_ticker %></a></th>
-                          <td><%= coin[:name] %></td>
-                          <td><%= asset.amount.round(2) %></td>
-                          <td><%= coin[:current_price].round(2) %></td>
-                          <td><%= asset.amount.round(2)*coin[:current_price].round(2) %></td>
+                          <th scope="col">#</th>
+                          <th scope="col">Coin</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Curren Price</th>
+                          <th scope="col">Value (U$)</th>
                         </tr>
-                      <% end %>
-                        <%# <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                      </thead>
+                      <tbody>
+                        <% total = [] %>
+                        <% wallet = @wallets.first %>
+                        <% assets = wallet.assets %>
+                        <% assets.each do |asset| %>
+                          <% coin = coin(@data, asset) %>
+                          <% total.push((asset.amount*coin[:current_price]).round(2)) %>
+                          <tr>
+                            <th scope="row"><a href="#"><%= asset.coin_ticker %></a></th>
+                            <td><%= coin[:name] %></td>
+                            <td><%= asset.amount.round(2) %></td>
+                            <td><%= coin[:current_price].round(2) %></td>
+                            <td><%= asset.amount.round(2)*coin[:current_price].round(2) %></td>
+                          </tr>
+                        <% end %>
+                          <%# <td>Brandon Jacob</td>
+                          <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                          <td>$64</td>
+                          <td><span class="badge bg-success">Approved</span></td>
 
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr> %>
-                    </tbody>
-                  </table>
+                        <tr>
+                          <th scope="row"><a href="#">#2147</a></th>
+                          <td>Bridie Kessler</td>
+                          <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
+                          <td>$47</td>
+                          <td><span class="badge bg-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><a href="#">#2049</a></th>
+                          <td>Ashleigh Langosh</td>
+                          <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
+                          <td>$147</td>
+                          <td><span class="badge bg-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><a href="#">#2644</a></th>
+                          <td>Angus Grady</td>
+                          <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                          <td>$67</td>
+                          <td><span class="badge bg-danger">Rejected</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><a href="#">#2644</a></th>
+                          <td>Raheem Lehner</td>
+                          <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                          <td>$165</td>
+                          <td><span class="badge bg-success">Approved</span></td>
+                        </tr> %>
+                      </tbody>
+                    </table>
+
+                  </div>
 
                 </div>
+              </div><!-- End Recent Sales -->
 
-              </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+              <!-- Sales Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
 
 
 
-                <div class="card-body">
-                  <h5 class="card-title">Total <span>| USD</span></h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Total <span>| USD</span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="ps-3">
-                      <h6>$<%= total.sum.round(2) %></h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <div class="d-flex align-items-center">
+                      <div class="ps-3">
+                        <h6>$<%= total.sum.round(2) %></h6>
+                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
+                      </div>
                     </div>
                   </div>
+
                 </div>
+              </div><!-- End Sales Card -->
 
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
+              <!-- Revenue Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card revenue-card">
 
 
 
-                <div class="card-body">
-                  <h5 class="card-title">Total <span>| BTC</span></h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Total <span>| BTC</span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="ps-3">
-                      <% btc = @data.select{ |key| key["symbol"] == 'btc' }.first.transform_keys(&:to_sym) %>
-                      <h6><%= (total.sum/btc[:current_price]).round(6) %></h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <div class="d-flex align-items-center">
+                      <div class="ps-3">
+                        <% btc = @data.select{ |key| key["symbol"] == 'btc' }.first.transform_keys(&:to_sym) %>
+                        <h6><%= (total.sum/btc[:current_price]).round(6) %></h6>
+                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
+                      </div>
                     </div>
                   </div>
+
                 </div>
+              </div><!-- End Revenue Card -->
 
+              <!-- Top Selling -->
+
+
+            </div>
+          <% else %>
+          <h2 class='text-center' style="margin: 0; padding: 0;">You don't have a wallet yet.</h2>
+
+            <div class="row">
+            <%= link_to '#', style: "flex-grow: 1;" do %>
+              <div class="card col-12 text-center">
+                <h2>Create a Wallet</h2>
               </div>
-            </div><!-- End Revenue Card -->
+            <% end %>
+            </div>
+          <% end %>
 
-            <!-- Top Selling -->
-
-
-          </div>
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
