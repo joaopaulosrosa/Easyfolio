@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'coin_explore', to: 'pages#explore'
   get 'dashboard', to: 'pages#dashboard'
 
-
   # resources :users do
   #   resources :wallets, only: [ :new, :create, :destroy, :show, :index ] do
   #     resources :assets
@@ -17,4 +16,5 @@ Rails.application.routes.draw do
   resources :watchlists, only: [:show] do
     resources :coin_bookmarks, only: [:new, :create, :destroy]
   end
+
 end
