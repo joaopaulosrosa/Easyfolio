@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>FlexStart Bootstrap Template - Index</title>
+  <title>EasyFolio - Index</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -47,23 +47,34 @@
         <span>Easyfolio</span>
       </a>
 
+      <% if user_signed_in? %>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Features</a></li>
-          <li><a class="nav-link scrollto" href="#services">Pricing</a></li>
-          <li><a class="nav-link scrollto" href="#about">Coin Index</a></li>
-          <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
+            <%= link_to "Home", root_path, class: "nav-link" %>
+            <li><a class="nav-link scrollto" href="#services">Features</a></li>
+            <%# <li><a class="nav-link scrollto" href="#services">Pricing</a></li> %>
+            <li><a class="nav-link scrollto" href="#about">Coin Index</a></li>
+            <li class="dropdown"><%= link_to "Dashboard", dashboard_path %></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+       <% else %>
+          <nav id="navbar" class="navbar">
+          <ul>
+            <%= link_to "Home", root_path, class: "nav-link" %>
+            <li><a class="nav-link scrollto" href="#services">Features</a></li>
+            <li><a class="nav-link scrollto" href="#services">Pricing</a></li>
+            <li><a class="nav-link scrollto" href="#about">Coin Index</a></li>
+            <li class="dropdown"><%= link_to "Login", new_user_session_path %></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Dashboard</a></li>
               </li>
               <li><a href="#">Wallet</a></li>
               <li><a href="#">Watchlist</a></li>
             </ul>
-          </li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
+            </li>
+          <li><a class="getstarted scrollto" href="#about" >Get Started</a></li>
         <i class="bi bi-list mobile-nav-toggle"></i>
+      <% end %>
+        </ul>
       </nav><!-- .navbar -->
 
     </div>
@@ -75,10 +86,10 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">Crypto Portfolio management solution</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Set a strategy and keep track of your crypto investments with real time solutions and insights.</h2>
+          <h2 data-aos="fade-up" data-aos-delay="400">Set a strategy and keep track of your crypto investments with real time data and insights.</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-            <button type="button" class="btn btn-primary">Get Started</button>
+            <button id="btn" type="button" class="btn btn-primary">Get Started</button>
             </div>
           </div>
         </div>
@@ -95,65 +106,6 @@
     <section id="about" class="about">
 
 
-    </section><!-- End About Section -->
-
-    <!-- ======= Values Section ======= -->
-    <section id="values" class="values">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h2>Features</h2>
-          <p>Powerful financial solutions for your crypto portfolio</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              <img src="assets/img/values-1.png" class="img-fluid" alt="">
-              <h3>Import wallet or create your own</h3>
-              <p>Import your wallet from over 100 exchanges or build your wallet manually.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-              <img src="assets/img/values-2.png" class="img-fluid" alt="">
-              <h3>Track performance over time.</h3>
-              <p>Gain key insights into your holdings to help you make decisions.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-            <div class="box">
-              <img src="assets/img/values-3.png" class="img-fluid" alt="">
-              <h3>Create a watchlist and discover new opportunities.</h3>
-              <p>Follow new coins and get key performance metrics delivered to your dashboard.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- End Values Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-
-
-
-        <!-- Feature Tabs -->
-
-        <!-- Feature Icons -->
-
-    </section><!-- End Features Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -161,8 +113,8 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h2>Services</h2>
-          <p>Veritatis et dolores facere numquam et praesentium</p>
+          <h2>Features</h2>
+          <p>All the useful features you need to manage your growing investments</p>
         </header>
 
         <div class="row gy-4">
@@ -170,8 +122,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-box blue">
               <i class="ri-discuss-line icon"></i>
-              <h3>Nesciunt Mete</h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <h3>Create a wallet</h3>
+              <p>Create multiple wallets to track different investment strategies.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -179,8 +131,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-box orange">
               <i class="ri-discuss-line icon"></i>
-              <h3>Eosle Commodi</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <h3>Research new coins</h3>
+              <p>Learn about all the coins in the cryptoverse and gain real time insight into the coins.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -188,39 +140,11 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-box green">
               <i class="ri-discuss-line icon"></i>
-              <h3>Ledo Markt</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <h3>Set a strategy</h3>
+              <p>Get personalized reccommendations based on your investment plan, set it and forget it.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box red">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Asperiores Commodi</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-box purple">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Velit Doloremque.</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-            <div class="service-box pink">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Dolori Architecto</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -234,61 +158,61 @@
 
         <header class="section-header">
           <h2>Pricing</h2>
-          <p>Check our Pricing</p>
+          <p>Flexible pricing to help you acheive your goals</p>
         </header>
 
         <div class="row gy-4" data-aos="fade-left">
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
               <h3 style="color: #07d5c0;">Free Plan</h3>
               <div class="price"><sup>$</sup>0<span> / mo</span></div>
               <img src="assets/img/pricing-free.png" class="img-fluid" alt="">
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>One wallet</li>
+                <li>One watchlist</li>
+                <li>Research top 100 coins</li>
+                <li class="na">Advanced coin reporting</li>
+                <li class="na">Buy/Sell Alerts</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="200">
             <div class="box">
               <span class="featured">Featured</span>
               <h3 style="color: #65c600;">Starter Plan</h3>
               <div class="price"><sup>$</sup>19<span> / mo</span></div>
               <img src="assets/img/pricing-starter.png" class="img-fluid" alt="">
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Up to 3 wallets</li>
+                <li>Up to 3 watchlists</li>
+                <li>Research top 1000 coins</li>
+                <li>Advanced coin reporting</li>
+                <li class="na">Buy/Sell Alerts</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="300">
             <div class="box">
-              <h3 style="color: #ff901c;">Business Plan</h3>
+              <h3 style="color: #ff901c;">Ultimate Plan</h3>
               <div class="price"><sup>$</sup>29<span> / mo</span></div>
               <img src="assets/img/pricing-business.png" class="img-fluid" alt="">
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Unlimited wallets</li>
+                <li>Unlimited watchlists</li>
+                <li>Research the enitre cryptovers</li>
+                <li>Complete coin reporting</li>
+                <li>Buy/Sell signaling</li>
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+          <%# <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="box">
               <h3 style="color: #ff0071;">Ultimate Plan</h3>
               <div class="price"><sup>$</sup>49<span> / mo</span></div>
@@ -302,7 +226,7 @@
               </ul>
               <a href="#" class="btn-buy">Buy Now</a>
             </div>
-          </div>
+          </div> %>
 
         </div>
 
@@ -419,19 +343,6 @@
 
     </section><!-- End F.A.Q Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-
-    <!-- ======= Testimonials Section ======= -->
-
-
-    <!-- ======= Clients Section ======= -->
-
-    <!-- ======= Contact Section ======= -->
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
