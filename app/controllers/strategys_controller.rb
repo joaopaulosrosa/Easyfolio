@@ -1,8 +1,8 @@
 class StrategysController < ApplicationController
   def edit
     @strategy = Strategy.find(params[:id])
-    @asset = Asset.new()
+    @coin_share = CoinShare.new()
     authorize @strategy
-    authorize @asset
+    authorize @coin_share
   end
 end
