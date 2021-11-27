@@ -225,7 +225,8 @@
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Wallet's Strategy <span>| Manage</span></h5>
+              <h5 class="card-title">Wallet's Strategy <span>| <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
+              <%= @wallets.first.strategy %>
 
             </div>
           </div><!-- End Recent Activity -->

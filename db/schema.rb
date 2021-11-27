@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_143139) do
+ActiveRecord::Schema.define(version: 2021_11_27_151744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2021_11_27_143139) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["watchlist_id"], name: "index_coin_bookmarks_on_watchlist_id"
+  end
+
+  create_table "coin_shares", force: :cascade do |t|
+    t.bigint "strategy_id", null: false
+    t.float "coin_share"
+    t.string "coin_ticker"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["strategy_id"], name: "index_coin_shares_on_strategy_id"
   end
 
   create_table "strategies", force: :cascade do |t|
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_11_27_143139) do
 
   add_foreign_key "assets", "wallets"
   add_foreign_key "coin_bookmarks", "watchlists"
+  add_foreign_key "coin_shares", "strategies"
   add_foreign_key "wallets", "users"
   add_foreign_key "watchlists", "users"
 end
