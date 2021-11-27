@@ -14,9 +14,13 @@ class PagesController < ApplicationController
     if params[:query].present?
       data = HTTParty.get(url).body
       data_json = JSON.parse(data)
-      response = data_json.select{ |key| key["symbol"] == params[:query] }.first
-      @coin = response.transform_keys(&:to_sym)
-      @btc = get_btc
+      if data_json.select{ |key| key["symbol"] == params[:query] }.empty?
+        flash[:alert] = "This coin doesn't exist, tipe again."
+      else
+        response = data_json.select{ |key| key["symbol"] == params[:query] }.first
+        @coin = response.transform_keys(&:to_sym);
+        @btc = get_btc;
+      end
     end
   end
 

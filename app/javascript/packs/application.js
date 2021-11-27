@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 import { LoadChart } from '../components/map'
 import { LoadBallance } from '../components/ballance'
+import { autocomplete } from '../components/search'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 // Internal imports, e.g:
@@ -38,6 +39,12 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
+
+  // autocomplete for Search coins;
+  const input = document.querySelector('#find-coin');
+   if (input) {
+    input.addEventListener('keyup', autocomplete);
+   }
 });
 
 /**
