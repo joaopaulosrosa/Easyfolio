@@ -13,8 +13,10 @@ Rails.application.routes.draw do
       resources :assets, only: [ :create, :destroy ]
     end
   end
+  
   get 'watchlist', to: 'watchlists#show'
   resources :watchlists, only: [:show] do
     resources :coin_bookmarks, only: [:new, :create, :destroy]
   end
+
 end
