@@ -22,7 +22,7 @@ before_action :get_wallet, only: [:show, :destroy]
     @wallet.user = current_user
     authorize @wallet
     if @wallet.save
-      redirect_to user_wallet_path(current_user, @wallet), notice: 'Wallet has been created'
+      redirect_to '/dashboard'
     else
       render :new
     end

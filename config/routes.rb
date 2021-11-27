@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
 
-  # resources :users do
-  #   resources :wallets, only: [ :new, :create, :destroy, :show, :index ] do
-  #     resources :assets
-  #   end
-  # end
+  resources :users do
+    resources :wallets, only: [ :new, :create, :destroy ] do
+      resources :assets, only: [ :create, :destroy ]
+    end
+  end
+  
   get 'watchlist', to: 'watchlists#show'
   resources :watchlists, only: [:show] do
     resources :coin_bookmarks, only: [:new, :create, :destroy]
   end
+
 end
