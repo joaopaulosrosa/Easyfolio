@@ -1,0 +1,138 @@
+<section class="section dashboard p-0">
+
+
+  <div class="row">
+
+    <a class="mb-4" style="text-decoration: none" href="/coin_explore">< Back to Coin Explore</a>
+
+    <!-- Left side columns -->
+    <div class="col-8">
+
+      <div class="row">
+
+        <!-- Coin Card -->
+        <div class="col-xxl-4">
+
+          <div class="card info-card" style="height: 172.59px">
+
+            <div class="card-body">
+
+
+              <div class="d-flex align-items-center mt-4">
+
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+
+                  <img src="<%= @coin['image']['small'] %>" alt="">
+
+                </div>
+
+                <div class="ps-3">
+
+                  <h6> <%= @coin['name'] %> </h6>
+                  <h5 class="m-0" id="chartticker"><%= @coin['symbol'].upcase %></h5>
+
+
+                </div>
+
+              </div>
+
+              <div class="d-flex justify-content-between">
+
+              <a class="m-2" target="_blank" style="text-decoration: none" href="<%= @coin['links']['homepage'][0] %>">
+                <span><%= @coin['links']['homepage'][0] %></span>
+              </a>
+              <h6 class="mr-3">#<%= @coin['market_cap_rank'] %></h6>
+
+              </div>
+
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- End Coin Card -->
+
+        <!-- Market Info Card -->
+        <div class="col-xxl-8">
+          <div class="card info-card sales-card" style="height: 172.59px">
+
+            <div class="card-body">
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- End Market Info Card -->
+
+      </div>
+
+      <!-- TV Chart -->
+      <div class="card">
+
+        <div class="card-body">
+
+          <div class="tradingview-widget-container" id="tvchart"></div>
+
+        </div>
+
+      </div>
+      <!-- End TV Chart -->
+
+    </div>
+
+    <!-- End Left side columns -->
+
+    <!-- Right side columns -->
+    <div class="col-4">
+
+      <!-- TradingView Widget BEGIN -->
+      <div class="card">
+
+        <div class="card-body">
+
+          <div class="tradingview-widget-container" style="margin: 0 auto">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+            {
+            "interval": "1D",
+            "width": "90%",
+            "isTransparent": true,
+            "height": "450",
+            "symbol": "BINANCE:<%= @coin['symbol'] %>USD",
+            "showIntervalTabs": true,
+            "locale": "en",
+            "colorTheme": "light"
+            }
+            </script>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- TradingView Widget END -->
+
+      <!-- About Card -->
+      <div class="card">
+
+        <div class="card-body">
+
+          <h5 class="card-title">About</h5>
+          <p>
+            <%=  %>
+          </p>
+
+        </div>
+
+      </div>
+      <!-- End About Card -->
+
+
+    </div>
+    <!-- End Right side columns -->
+  </div>
+
+</section>
