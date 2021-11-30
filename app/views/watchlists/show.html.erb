@@ -27,7 +27,7 @@
               <td><%= coin[:name] %></td>
               <td><%= coin[:market_cap] %></td>
               <td><%= coin[:current_price].round(2) %></td>
-              <td><%= coin[:price_change_percentage_24h] %>%</td>
+              <td style="<%= coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
             </tr>
           <% end %>
         </tbody>
