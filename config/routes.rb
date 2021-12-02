@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'coin_explore', to: 'pages#explore'
   get 'dashboard', to: 'pages#dashboard'
   get 'coin', to: 'pages#coin'
+  get 'watchlist', to: 'watchlists#show'
 
 
   resources :users do
