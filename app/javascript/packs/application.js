@@ -24,8 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { LoadChart } from '../components/map'
-import { LoadBallance } from '../components/ballance'
+import { LoadChart } from '../components/chart'
+
 import { autocomplete } from '../components/search'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -35,7 +35,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   LoadChart();
-  LoadBallance()
+
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
