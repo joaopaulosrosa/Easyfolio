@@ -1,7 +1,7 @@
 .text-center {
   padding: 90px 90px;
   text-align: center;
-  margin: 60px;
+  margin: 0px;
 }
 
 .row-form {
@@ -10,4 +10,10 @@
   border-color: rgba(8, 8, 94, 0.2);
   margin: 20px 40px;
   padding: 40px;
+  h2 {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  }
 }

@@ -28,13 +28,27 @@ import { LoadChart } from '../components/chart'
 import { dragableWatchlist } from '../components/dragable_watchlist'
 import { getBinance } from '../plugins/getBinance'
 
+import { autocomplete } from '../components/search'
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   LoadChart();
   dragableWatchlist();
   getBinance();
+
+  // Call your functions here, e.g:
+  // initSelect2();
+  initMapbox();
+
+  // autocomplete for Search coins;
+  const input = document.querySelector('#find-coin');
+   if (input) {
+    input.addEventListener('keyup', autocomplete);
+   }
 });
 
 /**
