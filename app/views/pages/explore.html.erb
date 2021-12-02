@@ -9,15 +9,19 @@
         <div class="card recent-sales">
           <div class="card-body">
             <h5 class="card-title"> Coin <span>| Explore</span></h5>
-            <%= form_tag coin_explore_path, method: :get do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Find a coin"
-              %>
-              <%= submit_tag "Search", class: "btn btn-primary" %>
-            <% end %>
-
+            <div class="list-style">
+              <%= form_tag coin_explore_path, method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  autocomplete:"off",
+                  placeholder: "Find a coin",
+                  id: "find-coin"
+                %>
+                <ul id="results" class="list-group"></ul>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              <% end %>
+            </div>
             <div class="d-flex">
               <img class="coin-logo" style="width:20px; height:20px" src="<%= @coin[:image] if @coin %>" alt="">
               <p><%= @coin[:id] if @coin %> : price - <%= @coin[:current_price] if @coin %> | market cap - <%= @coin[:market_cap] if @coin %> | today's variation <%= @coin[:price_change_percentage_24h] if @coin %>%</p>
