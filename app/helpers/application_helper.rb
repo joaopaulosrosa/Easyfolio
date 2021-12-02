@@ -20,4 +20,22 @@ module ApplicationHelper
     btc_d = ((btc_data['market_data']['market_cap']['usd']) / market_cap) * 100
     btc_d.round(2)
   end
+
+  def coin_data(coin_name)
+    url = "https://api.coingecko.com/api/v3/coins/#{coin_name}"
+    data = HTTParty.get(url).body
+    JSON.parse(data)
+  end
+
+  # def binance_api
+  #   api_header = {
+  #     API_KEY: 'UWQQv1qTI5XQ4Dxn6SXP9eoE559o0tUBQ6GsNdURD6Hc1pef1hzCldxwwRQ4hhAL',
+  #     SECRET: 'oxrUANTILzmSjbxvptCsi3appQlzS6iv7HHnd7JOC6sJBvUJXACsJHvbOBUzSc5X',
+  #     URL: 'https://api.binance.com'
+  #   }
+  #   data = {
+  #     type
+  #   timestamp =
+  #   mac = OpenSSL::HMAC.hexdigest("SHA256", api_header[:SECRET], data)
+  # end
 end

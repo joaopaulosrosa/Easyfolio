@@ -1,41 +1,82 @@
+<section class="section dashboard p-0">
 
-<div class="col-12">
-  <div class="card recent-sales">
-    <div class="card-body">
-      <h5 class="card-title"> Coins <span>| owned</span></h5>
-        <%= simple_form_for [@watchlist, @coin_bookmark] do |f| %>
-          <%= f.input :coin_ticker %>
-          <%= f.submit %>
-        <% end %>
+  <div class="row">
 
-      <table class="table table-borderless datatable">
+    <!-- Left Side -->
+    <div class="col-8">
 
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Coin</th>
-            <th scope="col">Market Cap</th>
-            <th scope="col">Curren Price</th>
-            <th scope="col">24h %</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @tickers.each do |ticker| %>
-            <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
-            <tr>
-              <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
-              <td><%= coin[:name] %></td>
-              <td><%= coin[:market_cap] %></td>
-              <td><%= coin[:current_price].round(2) %></td>
-              <td><%= coin[:price_change_percentage_24h] %>%</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="card recent-sales">
+
+        <div class="card-body">
+
+          <h5 class="card-title"> Coins <span>| watchlist</span></h5>
+
+          <table id="table" class="table table-borderless datatable">
+
+            <thead>
+
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Coin</th>
+                <th scope="col">Market Cap</th>
+                <th scope="col">Curren Price</th>
+                <th scope="col">24h %</th>
+              </tr>
+
+            </thead>
+            <tbody>
+
+              <% @tickers.each do |ticker| %>
+
+                <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
+
+                <tr class='handle'>
+                  <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
+                  <td><%= coin[:name] %></td>
+                  <td><%= coin[:market_cap] %></td>
+                  <td><%= coin[:current_price].round(2) %></td>
+                  <td style="<%= coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
+                </tr>
+
+              <% end %>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
     </div>
-  </div>
-</div>
+    <!-- End Left Side -->
 
+    <!-- Right Side -->
+    <div class="col-4">
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <h5 class="card-title"> Add Coin <span>| to watchlist</span></h5>
+
+            <%= simple_form_for [@watchlist, @coin_bookmark] do |f| %>
+
+              <%= f.input :coin_ticker %>
+              <%= f.submit %>
+
+            <% end %>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- End Right Side -->
+
+  </div>
+
+</section>
 
 <%# <%= link_to 'Add coins', new_watchlist_coin_bookmark_path(@watchlist), class: 'btn btn-secondary' %>
 <%# <%= link_to '🗑️', watchlist_coin_bookmark_path(@watchlist, ticker), method: :delete %>
