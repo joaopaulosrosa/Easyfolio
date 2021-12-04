@@ -38,7 +38,10 @@ class PagesController < ApplicationController
       else
         @coin = get_coin(id_query)
       end
+    else
+      redirect_to coin_explore_path
     end
+
   end
 
   private
