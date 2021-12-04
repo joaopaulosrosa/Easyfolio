@@ -18,9 +18,11 @@ Rails.application.routes.draw do
     resources :strategys, only: [:edit, :update]
   end
 
-  resources :strategys, only: [] do
-    resources :coin_shares, only: [:new, :create]
+  resources :strategys, only: [:show] do
+    resources :coin_shares, only: [:new, :create, :update, :destroy]
   end
+
+  resources :coin_shares, only: [:show]
 
   get 'watchlist', to: 'watchlists#show'
   resources :watchlists, only: [:show] do

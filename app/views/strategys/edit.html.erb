@@ -1,17 +1,20 @@
-<h1>Strategy edit</h1>
+<h1>Wallet Allocation</h1>
 
 <% @strategy.coin_shares.each do |coin| %>
-  <p><%= coin.coin_ticker %> <span><%= coin.coin_share %></span> </p>
+  <%= simple_form_for(coin, html: { class: "edit-strategy"}) do |f| %>
+    <%= coin.coin_ticker %>
+    <%= f.input :coin_share %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
 
-<%= link_to 'Test add', new_strategy_coin_share_path(@strategy) %>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCoinsModal">
   + Add a coin
 </button>
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCoinsModal" tabindex="-1" role="dialog" aria-labelledby="addCoinsModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">

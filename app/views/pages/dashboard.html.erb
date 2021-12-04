@@ -226,7 +226,9 @@
 
             <div class="card-body">
               <h5 class="card-title">Wallet's Strategy <span>| <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
-              <%= @wallets.first.strategy %>
+              <% @wallets.first.strategy.coin_shares.each do |coin| %>
+                <p><strong><%= coin.coin_ticker %></strong> - <%= coin.coin_share %></p>
+              <% end %>
 
             </div>
           </div><!-- End Recent Activity -->
