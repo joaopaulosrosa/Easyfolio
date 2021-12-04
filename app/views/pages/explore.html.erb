@@ -1,44 +1,91 @@
-<%# <form action="coin_explore" onChange="LoadChart()" id="coinsymbol" accept-charset="UTF-8" method="get">
-  <input type="text" name="query" id="query" class="form-control" placeholder="Find a coin">
-  <input type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="Search">
-</form> %>
+<section class="section dashboard p-0">
+
+  <div class="pagetitle">
+
+    <h1>Explore</h1>
+
+  </div><!-- End Page Title -->
 
   <div class="row">
-    <div class="col-lg-8">
-      <div class="col-12">
-        <div class="card recent-sales">
-          <div class="card-body">
-            <h5 class="card-title"> Coin <span>| Explore</span></h5>
-            <%= form_tag coin_explore_path, method: :get do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Find a coin"
-              %>
-              <%= submit_tag "Search", class: "btn btn-primary" %>
-            <% end %>
 
-            <div class="d-flex">
-              <img class="coin-logo" style="width:20px; height:20px" src="<%= @coin[:image] if @coin %>" alt="">
-              <p><%= @coin[:id] if @coin %> : price - <%= @coin[:current_price] if @coin %> | market cap - <%= @coin[:market_cap] if @coin %> | today's variation <%= @coin[:price_change_percentage_24h] if @coin %>%</p>
-            </div>
-            <div class="tradingview-widget-container" id="tvchart"></div>
-          </div>
+    <!-- Left side columns -->
+    <div class="col-8">
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <h5 class="card-title">Top 10 <span>| coins</span></h5>
+
+          <table class="table table-borderless datatable">
+
+            <thead>
+
+              <tr>
+
+                <th scope="col">#</th>
+                <th scope="col">Coin</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">24h (%)</th>
+                <th scope="col">Market Cap</th>
+                <th scope="col">Last 7 days</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <% @top10.each do |coin| %>
+                <tr>
+
+                  <th scope="row"><a href="#"><%= coin['market_cap_rank'] %></a></th>
+                  <td><%= coin['name'] %></td>
+                  <td><%= coin['current_price'] %></td>
+                  <td style="<%= coin['price_change_percentage_24h'].positive? ? "color: green" : "color: red" %>"><%= coin['price_change_percentage_24h'].round(2) %>%</td>
+                  <td><%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>
+                  <td>
+
+                  </td>
+
+                </tr>
+              <% end %>
+
+            </tbody>
+
+          </table>
+
         </div>
+
       </div>
+
     </div>
+    <!-- End Left side columns -->
+
+    <!-- Right side columns -->
+    <div class="col-4">
+
+      <div class="card recent-sales">
+
+        <div class="card-body">
+
+          <h5 class="card-title"> Coin <span>| Explore</span></h5>
+          <%= form_tag coin_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a coin"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- End Right side columns -->
+
   </div>
 
-<%#<%= form_tag coin_explore_path, method: :get do %>
-<%#  <%= text_field_tag :query,
-    params[:query],
-    onChange: "LoadCharts()",
-    id: "coinsymbol",
-    placeholder: "Find a coin"
-  %>
-<%#  <%= submit_tag "Search", class: "btn btn-primary" %>
-<%# <% end %>
-
-
-<%# <% if @coin %>
-<%# <% end %>
+</section>
