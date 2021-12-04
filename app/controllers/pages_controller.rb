@@ -25,6 +25,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def dashboard
+    @data = call_coin_gecko
+  end
+
   def coin
     url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
     if params[:query].present?
