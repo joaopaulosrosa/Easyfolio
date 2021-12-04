@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   resources :wallets, only: [] do
     resources :strategys, only: [:update, :edit]
   end
-  resources :strategys do
-    resources :coin_shares
+  resources :strategys, only: [] do
+    resources :coin_shares, only: [:index]
   end
-  resources :coin_shares
+  resources :coin_shares, only: [:update]
 
 end

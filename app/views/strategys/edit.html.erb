@@ -1,7 +1,7 @@
 <h1>Wallet Allocation</h1>
 
 <% @strategy.coin_shares.each do |coin| %>
-  <%= simple_form_for(coin, html: { class: "edit-strategy"}) do |f| %>
+  <%= simple_form_for(coin, html: { class: "edit-strategy"}, remote: true) do |f| %>
     <h2><%= coin.coin_ticker %></h2>
     <%= f.input :coin_share %>
     <%= f.submit %>

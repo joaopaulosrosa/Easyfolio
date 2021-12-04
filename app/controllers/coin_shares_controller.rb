@@ -13,6 +13,12 @@ class CoinSharesController < ApplicationController
     end
   end
 
+  def update
+    @coin_share = CoinShare.find(params[:id])
+    @coin_share.update(coin_params)
+    authorize @coin_share
+  end
+
   private
 
   def coin_params

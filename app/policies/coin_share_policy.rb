@@ -9,7 +9,7 @@ class CoinSharePolicy < ApplicationPolicy
     true
   end
 
-  def edit?
+  def update?
     true
   end
 end
