@@ -1,11 +1,12 @@
 const LoadChart = () => {
-  let symbol = document.getElementById('query')
+  let symbol = document.getElementById('chartticker')
   if (symbol) {
+    symbol = symbol.textContent
     new TradingView.widget(
       {
-        "width": 600,
+        "width": 865,
         "height": 400,
-        "symbol": "BINANCE:" + symbol.value + "USDT",
+        "symbol": "BINANCE:" + symbol + "USDT",
         // "symbol": "BINANCE:BTCUSDT",
         "interval": "D",
         "timezone": "Etc/UTC",
@@ -20,8 +21,8 @@ const LoadChart = () => {
         "container_id": "tvchart"
       }
     );
-  }
 
+  }
 }
 
 export { LoadChart }
