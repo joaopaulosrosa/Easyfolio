@@ -2,7 +2,7 @@
 
 <% @strategy.coin_shares.each do |coin| %>
   <%= simple_form_for(coin, html: { class: "edit-strategy"}) do |f| %>
-    <%= coin.coin_ticker %>
+    <h2><%= coin.coin_ticker %></h2>
     <%= f.input :coin_share %>
     <%= f.submit %>
   <% end %>

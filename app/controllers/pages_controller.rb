@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:dashboard]
-  before_action :get_wallet, only: [:dashboard]
+  before_action :get_wallet, :call_coin_gecko, only: [:dashboard]
 
   def home
     @markers = [{
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
 
   def api_json(url)
     data = HTTParty.get(url).body
-    JSON.parse(data)
+    @data = JSON.parse(data)
   end
 
   def get_wallet

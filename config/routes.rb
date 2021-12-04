@@ -21,5 +21,12 @@ Rails.application.routes.draw do
     resources :coin_bookmarks, only: [:new, :create, :destroy]
   end
 
+  resources :wallets, only: [] do
+    resources :strategys, only: [:update, :edit]
+  end
+  resources :strategys do
+    resources :coin_shares
+  end
+  resources :coin_shares
 
 end
