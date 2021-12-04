@@ -19,6 +19,12 @@ class CoinSharesController < ApplicationController
     authorize @coin_share
   end
 
+  def destroy
+    @coin_share = CoinShare.find(params[:id])
+    @coin_share.destroy
+    authorize @coin_share
+    redirect_back(fallback_location: root_path)
+  end
   private
 
   def coin_params
