@@ -26,20 +26,19 @@
             </thead>
             <tbody>
 
-              <% @tickers.each do |ticker| %>
+              <%# <% @tickers.each do |ticker| %> %>
 
-                <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %>
+                <%# <% coin = @data.select{ |key| key["symbol"] == ticker }.first.transform_keys(&:to_sym) %> %>
 
-                <tr class='handle'>
+                <%# <tr class='handle'>
                   <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
-                  <td><%= coin[:name] %></td>
-                  <td><%= coin[:market_cap] %></td>
-                  <td><%= coin[:current_price].round(2) %></td>
-                  <td style="<%= coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
-                </tr>
+                  <%# <td><%= coin[:name] %></td>
+                  <%# <td><%= coin[:market_cap] %></td> %>
+                  <%# <td><%= coin[:current_price].round(2) %></td> %>
+                  <%# <td style="<%= coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" "><%= coin[:price_change_percentage_24h].round(2) %>%</td>%>
+                </tr> %> %> %>
 
-              <% end %>
-
+              <%# <% end %> %>
             </tbody>
 
           </table>
