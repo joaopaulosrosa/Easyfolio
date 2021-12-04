@@ -2,6 +2,8 @@
 const autocomplete = (e) => {
   const results = document.querySelector('#results');
   const input = document.querySelector('#find-coin');
+  console.log(results);
+  console.log(input);
   fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd`)
     .then(response => response.json())
     .then((data) => {
@@ -11,7 +13,7 @@ const autocomplete = (e) => {
           results.insertAdjacentHTML('beforeend', `<li>${coin.symbol}</li>`);
         }
         else {
-          console.log('Tipe')
+          // console.log(data);
         }
       });
 
