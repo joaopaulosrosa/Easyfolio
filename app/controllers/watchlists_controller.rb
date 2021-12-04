@@ -24,7 +24,7 @@ class WatchlistsController < ApplicationController
   end
 
   def coin
-    
+
     url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
     if params[:query].present?
       data = HTTParty.get(url).body
