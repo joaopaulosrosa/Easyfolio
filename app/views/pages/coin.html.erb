@@ -17,8 +17,10 @@
 
             <div class="card-body">
 
+               <h5 class="mr-3 text-end">#<%= @coin['market_cap_rank'] %></h5>
 
-              <div class="d-flex align-items-center mt-4">
+
+              <div class="d-flex align-items-center mt-1">
 
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
 
@@ -38,10 +40,10 @@
 
               <div class="d-flex justify-content-between">
 
-              <a class="m-2" target="_blank" style="text-decoration: none" href="<%= @coin['links']['homepage'][0] %>">
-                <span><%= @coin['links']['homepage'][0] %></span>
-              </a>
-              <h6 class="mr-3">#<%= @coin['market_cap_rank'] %></h6>
+                <a id ="link" class="m-2" target="_blank" href="<%= @coin['links']['homepage'][0] %>">
+                  <span><%= @coin['links']['homepage'][0] %></span>
+                </a>
+
 
               </div>
 
@@ -59,8 +61,60 @@
         <div class="col-xxl-8">
           <div class="card info-card sales-card" style="height: 172.59px">
 
-            <div class="card-body">
+            <div class="card-body price">
 
+              <div class="price-info">
+
+                <p>Current Price:</p>
+                <h2>$<%= number_with_delimiter(@coin['market_data']['current_price']['usd'], :delimiter => ',') %></h2>
+                <div class="d-flex align-items-center justify-content-end">
+                  <p class="mr-2">(24h)</p>
+                  <div class="percentage" style="background-color:<%= colorful_percentage_background(@coin['market_data']['price_change_percentage_24h']) %>">
+                    <div class="d-flex align-items-center">
+                      <i class="<%= arrow_up_or_down(@coin['market_data']['price_change_percentage_24h']) %>"></i>
+                      <p><%= @coin['market_data']['price_change_percentage_24h'].round(2) %>%</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="price-info wide">
+
+                <div style="width: 45%; padding-right: 20px">
+                  <p>Market Cap:</p>
+
+                  <div class="d-flex justify-content-end mb-2 mt-1">
+                    <p class="black">$<%= number_with_delimiter(@coin['market_data']['market_cap']['usd'], :delimiter => ',') %></p>
+                  </div>
+                  <div>
+                    <p>Volume:</p>
+                    <div class="d-flex justify-content-end mb-2 mt-1">
+                      <p class="black">$<%= number_with_delimiter(@coin['market_data']['total_volume']['usd'], :delimiter => ',') %></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="width: 45%; padding-right: 20px">
+                  <p>All Time High:</p>
+                  <div class="d-flex mb-2 mt-1">
+                    <p class="black">$<%= number_with_delimiter(@coin['market_data']['ath']['usd'], :delimiter => ',') %></p>
+                  </div>
+                  <div class="d-flex justify-content-end mb-2 mt-1">
+                    <div class="dropdown">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trade Now
+                      </a>
+
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Binance</a></li>
+                        <li><a class="dropdown-item" href="#">FTX</a></li>
+                        <li><a class="dropdown-item" href="#">Coin Base</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
