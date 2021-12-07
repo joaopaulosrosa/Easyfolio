@@ -1,16 +1,19 @@
-class AssetPolicy < ApplicationPolicy
+class CoinSharePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
-
   end
 
-  def show?
+  def create?
     true
   end
 
-  def edit?
+  def update?
+    true
+  end
+
+  def destroy?
     true
   end
 end

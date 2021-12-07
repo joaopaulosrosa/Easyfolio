@@ -1,0 +1,27 @@
+<h1>Allocation Plan</h1>
+<h4>Total allocated = <%= total_allocated(@strategy) %>%</h4>
+
+<% @strategy.coin_shares.each do |coin| %>
+  <%= simple_form_for(coin, html: { class: "edit-strategy"}, remote: true) do |f| %>
+    <h2><%= coin.coin_ticker %></h2>
+    <%= f.input :coin_share %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to 'Delete', coin_share_path(coin), class: 'btn btn-danger', method: :delete %>
+<% end %>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCoinsModal">
+  + Add a coin
+</button>
+<!-- Modal -->
+<div class="modal fade" id="addCoinsModal" tabindex="-1" role="dialog" aria-labelledby="addCoinsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render 'coin_shares/new' %>
+      </div>
+    </div>
+  </div>
+</div>

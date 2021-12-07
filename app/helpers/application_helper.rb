@@ -27,6 +27,27 @@ module ApplicationHelper
     JSON.parse(data)
   end
 
+  def total_allocated(strategy)
+    total = []
+    strategy.coin_shares.each do |coin_share|
+      total << coin_share.coin_share
+    end
+    if total.sum == 100
+      total.sum
+    else
+      total.sum.to_s + ' You need to allocate 100%'
+    end
+  end
+
+  def total_wallet(wallet, data)
+    total = 0
+    wallet.assets.each do |asset|
+      coin = coin(data, asset)
+      total += asset.amount*coin[:current_price]
+    end
+    total.round(2)
+  end
+
   # def binance_api
   #   api_header = {
   #     API_KEY: 'UWQQv1qTI5XQ4Dxn6SXP9eoE559o0tUBQ6GsNdURD6Hc1pef1hzCldxwwRQ4hhAL',

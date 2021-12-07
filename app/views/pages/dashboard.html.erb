@@ -148,36 +148,20 @@
 
       <!-- Market Overall -->
       <div class="card">
-
-
-        <div class="card-body">
-          <h5 class="card-title">Market Overall <span>| Today</span></h5>
-
-          <div class="activity">
-
-            <div class="activity-item d-flex">
-              <img src="https://alternative.me/crypto/fear-and-greed-index.png" style="width:300px; margin:0 auto" alt="">
+        <div class="card-body ">
+          <h5 class="card-title">Wallet's Strategy <span>| <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
+          <div class="d-flex justify-content-around">
+            <div class="strategy">
+              <% @wallets.first.strategy.coin_shares.each do |coin| %>
+                <p><strong><%= coin.coin_ticker %></strong> - <%= coin.coin_share %></p>
+                <% end %>
             </div>
-            <!-- End Fear & Greed -->
-
-            <div class="activity-item d-flex">
-              <div class="activite-content">Total Market Cap :</div>
-              <div class="activity-content">
-                U$ <%= number_with_delimiter(market_cap, :delimiter => ',') %>
-              </div>
+            <div class="flex-item">
+              <% @wallets.first.assets.each do |asset| %>
+                <p><strong><%= asset.coin_ticker %></strong> - <%= (asset.amount*coin(@data, asset)[:current_price] / total_wallet(@wallets.first, @data)).round(2) * 100 %></p>
+              <% end %>
             </div>
-            <!-- End Market Cap -->
-
-
-            <div class="activity-item d-flex">
-              <div class="activite-content">BTC Dominance  :</div>
-              <div class="activity-content">
-                <%= btc_dominance %>%
-              </div>
-            </div><!-- End BTC.D-->
-
           </div>
-
         </div>
       </div>
       <!-- End Market Overall -->
