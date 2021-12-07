@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def coin(data, asset)
-    data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
-  end
+  # def coin(data, asset)
+  #   data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
+  # end
 
   def market_cap
     url = 'https://api.coingecko.com/api/v3/global'
