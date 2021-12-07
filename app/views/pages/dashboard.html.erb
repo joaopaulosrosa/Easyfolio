@@ -148,14 +148,20 @@
 
       <!-- Market Overall -->
       <div class="card">
-
-
-        <div class="card-body">
+        <div class="card-body ">
           <h5 class="card-title">Wallet's Strategy <span>| <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
+          <div class="d-flex justify-content-around">
+            <div class="strategy">
               <% @wallets.first.strategy.coin_shares.each do |coin| %>
                 <p><strong><%= coin.coin_ticker %></strong> - <%= coin.coin_share %></p>
+                <% end %>
+            </div>
+            <div class="flex-item">
+              <% @wallets.first.assets.each do |asset| %>
+                <p><strong><%= asset.coin_ticker %></strong> - <%= (asset.amount*coin(@data, asset)[:current_price] / total_wallet(@wallets.first, @data)).round(2) * 100 %></p>
               <% end %>
-
+            </div>
+          </div>
         </div>
       </div>
       <!-- End Market Overall -->

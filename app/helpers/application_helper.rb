@@ -39,6 +39,15 @@ module ApplicationHelper
     end
   end
 
+  def total_wallet(wallet, data)
+    total = 0
+    wallet.assets.each do |asset|
+      coin = coin(data, asset)
+      total += asset.amount*coin[:current_price]
+    end
+    total.round(2)
+  end
+
   # def binance_api
   #   api_header = {
   #     API_KEY: 'UWQQv1qTI5XQ4Dxn6SXP9eoE559o0tUBQ6GsNdURD6Hc1pef1hzCldxwwRQ4hhAL',
