@@ -1,0 +1,28 @@
+.handle label {
+  display: block;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  border-bottom: solid 2px #aaa;
+}
+
+.handle label:hover {
+  background-color: chocolate;
+}
+
+.chart {
+  display: none;
+  overflow: hidden;
+}
+
+.handle input {
+  display: none;
+}
+
+#check2:checked ~ .chart {
+  display: inline;
+}
+
+.color {
+  display: block !important;
+}
