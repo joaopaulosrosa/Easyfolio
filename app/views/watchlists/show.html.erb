@@ -30,8 +30,8 @@
 
                 <% coin = @data.select{ |key| key["symbol"].downcase == ticker || key["name"].downcase == ticker}.first.transform_keys(&:to_sym) %>
                 <tr class='handle'>
-                  <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
-                  <td><%= coin[:name] %></td>
+                  <th scope="row"><%= coin[:symbol].upcase %></th>
+                  <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
                   <td><%= coin[:market_cap] %></td>
                   <td><%= coin[:current_price].round(2) %></td>
                   <% @color = coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>
