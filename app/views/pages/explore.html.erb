@@ -39,8 +39,8 @@
               <% @top10.each do |coin| %>
                 <tr>
 
-                  <th scope="row"><a href="#"><%= coin['market_cap_rank'] %></a></th>
-                  <td><%= coin['name'] %></td>
+                  <th scope="row"><%= coin['market_cap_rank'] %></th>
+                  <td><a href="/coin?query=<%= coin['name'] %>"><%= coin['name'] %></a></td>
                   <td><%= coin['current_price'] %></td>
                   <td style="<%= coin['price_change_percentage_24h'].positive? ? "color: green" : "color: red" %>"><%= coin['price_change_percentage_24h'].round(2) %>%</td>
                   <td><%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>

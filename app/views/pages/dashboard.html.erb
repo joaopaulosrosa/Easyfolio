@@ -74,8 +74,8 @@
                           <% total.push((asset.amount*coin[:current_price]).round(2)) %>
                           <tr>
 
-                            <th scope="row"><a href="#"><%= asset.coin_ticker %></a></th>
-                            <td><%= coin[:name] %></td>
+                            <th scope="row"><%= asset.coin_ticker.upcase %></th>
+                            <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
                             <td><%= asset.amount.round(2) %></td>
                             <td><%= coin[:current_price].round(2) %></td>
                             <td><%= asset.amount.round(2)*coin[:current_price].round(2) %></td>
@@ -147,23 +147,7 @@
     <div class="col-lg-4">
 
       <!-- Market Overall -->
-      <div class="card">
-        <div class="card-body ">
-          <h5 class="card-title">Wallet's Allocation<span> | <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
-          <div class="d-flex justify-content-around">
-            <div class="strategy">
-              <% @wallets.first.strategy.coin_shares.each do |coin| %>
-                <p><strong><%= coin.coin_ticker %></strong> - <%= coin.coin_share %></p>
-                <% end %>
-            </div>
-            <div class="flex-item">
-              <% @wallets.first.assets.each do |asset| %>
-                <p><strong><%= asset.coin_ticker %></strong> - <%= ((asset.amount*coin(@data, asset)[:current_price] / total_wallet(@wallets.first, @data)) * 100).round(2) %></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <!-- End Market Overall -->
 
     </div>

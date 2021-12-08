@@ -34,6 +34,7 @@ module ApplicationHelper
   def arrow_up_or_down(number)
     number.positive? ? "fas fa-sort-up" : "fas fa-sort-down"
   end
+
   def total_allocated(strategy)
     total = []
     strategy.coin_shares.each do |coin_share|
@@ -54,16 +55,4 @@ module ApplicationHelper
     end
     total.round(2)
   end
-
-  # def binance_api
-  #   api_header = {
-  #     API_KEY: 'UWQQv1qTI5XQ4Dxn6SXP9eoE559o0tUBQ6GsNdURD6Hc1pef1hzCldxwwRQ4hhAL',
-  #     SECRET: 'oxrUANTILzmSjbxvptCsi3appQlzS6iv7HHnd7JOC6sJBvUJXACsJHvbOBUzSc5X',
-  #     URL: 'https://api.binance.com'
-  #   }
-  #   data = {
-  #     type
-  #   timestamp =
-  #   mac = OpenSSL::HMAC.hexdigest("SHA256", api_header[:SECRET], data)
-  # end
 end
