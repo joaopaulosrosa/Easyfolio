@@ -69,7 +69,7 @@
                 <h2>$<%= number_with_delimiter(@coin['market_data']['current_price']['usd'], :delimiter => ',') %></h2>
                 <div class="d-flex align-items-center justify-content-end">
                   <p class="mr-2">(24h)</p>
-                  <div class="percentage" style="background-color:<%= colorful_percentage_background(@coin['market_data']['price_change_percentage_24h']) %>">
+                  <div class="percentage" style="background-color:<%= colorful_percentage(@coin['market_data']['price_change_percentage_24h']) %>">
                     <div class="d-flex align-items-center">
                       <i class="<%= arrow_up_or_down(@coin['market_data']['price_change_percentage_24h']) %>"></i>
                       <p><%= @coin['market_data']['price_change_percentage_24h'].round(2) %>%</p>

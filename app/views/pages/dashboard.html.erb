@@ -61,6 +61,7 @@
                           <th scope="col">Amount</th>
                           <th scope="col">Current Price</th>
                           <th scope="col">Value (U$)</th>
+                          <th scope="col">24h</th>
 
                         </tr>
 
@@ -78,7 +79,8 @@
                             <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
                             <td><%= asset.amount.round(2) %></td>
                             <td><%= coin[:current_price].round(2) %></td>
-                            <td><%= asset.amount.round(2)*coin[:current_price].round(2) %></td>
+                            <td>$<%= (asset.amount.round(2)*coin[:current_price]).round(2) %></td>
+                            <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
 
                           </tr>
                         <% end %>
