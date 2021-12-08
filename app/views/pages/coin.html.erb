@@ -97,11 +97,11 @@
 
                 <div style="width: 45%; padding-right: 20px">
                   <p>All Time High:</p>
-                  <div class="d-flex mb-2 mt-1">
+                  <div class="d-flex mb-2 mt-1 justify-content-end">
                     <p class="black">$<%= number_with_delimiter(@coin['market_data']['ath']['usd'], :delimiter => ',') %></p>
                   </div>
                   <div class="d-flex justify-content-end mb-2 mt-1">
-                    <div class="dropdown">
+                    <div class="dropdown mt-3">
                       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         Trade Now
                       </a>
@@ -176,8 +176,9 @@
 
           <h5 class="card-title">About</h5>
           <p>
-            <%=  %>
+            <%= @coin['description']['en'][0..700] %>
           </p>
+          <a href="">more</a>
 
         </div>
 

@@ -27,6 +27,14 @@ module ApplicationHelper
     JSON.parse(data)
   end
 
+  def colorful_percentage_background(number)
+    number.positive? ? "#26A69A" : "#EF5350"
+  end
+
+  def arrow_up_or_down(number)
+    number.positive? ? "fas fa-sort-up" : "fas fa-sort-down"
+  end
+
   # def binance_api
   #   api_header = {
   #     API_KEY: 'UWQQv1qTI5XQ4Dxn6SXP9eoE559o0tUBQ6GsNdURD6Hc1pef1hzCldxwwRQ4hhAL',
