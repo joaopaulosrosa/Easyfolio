@@ -20,11 +20,10 @@
   <body>
       <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">EasyFolio</span>
-      </a>
+    <div class="d-flex align-items-center p-4 mt-2">
+      <%= link_to dashboard_path do %>
+        <h1 id="logo">EasyFolio</h1>
+      <% end %>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
