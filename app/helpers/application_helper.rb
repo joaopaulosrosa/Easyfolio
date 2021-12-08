@@ -1,7 +1,7 @@
 module ApplicationHelper
-  # def coin(data, asset)
-  #   data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
-  # end
+  def coin(data, asset)
+    data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
+  end
 
   def market_cap
     url = 'https://api.coingecko.com/api/v3/global'
@@ -33,6 +33,7 @@ module ApplicationHelper
 
   def arrow_up_or_down(number)
     number.positive? ? "fas fa-sort-up" : "fas fa-sort-down"
+  end
   def total_allocated(strategy)
     total = []
     strategy.coin_shares.each do |coin_share|
