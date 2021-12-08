@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def coin(data, asset)
-    data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
-  end
+  # def coin(data, asset)
+  #   data.select{ |key| key["symbol"] == asset.coin_ticker }.first.transform_keys(&:to_sym)
+  # end
 
   def market_cap
     url = 'https://api.coingecko.com/api/v3/global'
@@ -33,6 +33,25 @@ module ApplicationHelper
 
   def arrow_up_or_down(number)
     number.positive? ? "fas fa-sort-up" : "fas fa-sort-down"
+  def total_allocated(strategy)
+    total = []
+    strategy.coin_shares.each do |coin_share|
+      total << coin_share.coin_share
+    end
+    if total.sum == 100
+      total.sum
+    else
+      total.sum.to_s + ' You need to allocate 100%'
+    end
+  end
+
+  def total_wallet(wallet, data)
+    total = 0
+    wallet.assets.each do |asset|
+      coin = coin(data, asset)
+      total += asset.amount*coin[:current_price]
+    end
+    total.round(2)
   end
 
   # def binance_api

@@ -1,0 +1,6 @@
+<h1>Coin new</h1>
+<%= simple_form_for [@strategy, @coin_share] do |f| %>
+  <%= f.input :coin_ticker %>
+  <%= f.input :coin_share %>
+  <%= f.submit %>
+<% end %>
