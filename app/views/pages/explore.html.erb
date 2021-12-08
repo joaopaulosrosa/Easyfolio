@@ -41,9 +41,9 @@
 
                   <th scope="row"><%= coin['market_cap_rank'] %></th>
                   <td><a href="/coin?query=<%= coin['name'] %>"><%= coin['name'] %></a></td>
-                  <td><%= coin['current_price'] %></td>
+                  <td>$<%= coin['current_price'] %></td>
                   <td> $<%= number_with_delimiter(coin['ath'].round(2), :delimiter => ',') %> </td>
-                  <td><%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>
+                  <td>$<%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>
                   <td style="color: <%= colorful_percentage(coin['price_change_percentage_24h'])%>"><%= coin['price_change_percentage_24h'].round(2) %>%</td>
 
                 </tr>

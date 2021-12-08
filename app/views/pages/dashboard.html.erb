@@ -78,8 +78,8 @@
                             <th scope="row"><%= asset.coin_ticker.upcase %></th>
                             <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
                             <td><%= asset.amount.round(2) %></td>
-                            <td><%= coin[:current_price].round(2) %></td>
-                            <td>$<%= (asset.amount.round(2)*coin[:current_price]).round(2) %></td>
+                            <td>$<%= coin[:current_price].round(2) %></td>
+                            <td>$<%= number_with_delimiter((asset.amount.round(2)*coin[:current_price]).round(2), :delimiter => ',') %></td>
                             <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
 
                           </tr>
