@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 import { LoadChart } from '../components/chart'
 import { dragableWatchlist } from '../components/dragable_watchlist'
-import { getBinance } from '../plugins/getBinance'
+// import { getBinance } from '../plugins/getBinance'
 
 import { autocomplete } from '../components/search'
 
@@ -38,7 +38,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   LoadChart();
   dragableWatchlist();
-  getBinance();
+  // getBinance();
 
   // Call your functions here, e.g:
   // initSelect2();
