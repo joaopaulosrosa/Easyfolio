@@ -27,9 +27,10 @@ module ApplicationHelper
     JSON.parse(data)
   end
 
-  def colorful_percentage_background(number)
+  def colorful_percentage(number)
     number.positive? ? "#26A69A" : "#EF5350"
   end
+
 
   def arrow_up_or_down(number)
     number.positive? ? "fas fa-sort-up" : "fas fa-sort-down"

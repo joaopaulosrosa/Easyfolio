@@ -32,10 +32,9 @@
                 <tr class='handle'>
                   <th scope="row"><%= coin[:symbol].upcase %></th>
                   <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
-                  <td><%= coin[:market_cap] %></td>
-                  <td><%= coin[:current_price].round(2) %></td>
-                  <% @color = coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>
-                  <td style="<%=@color%>"><%= coin[:price_change_percentage_24h].round(2) %></td>
+                  <td>$<%= number_with_delimiter(coin[:market_cap].round(2), :delimiter => ',') %></td>
+                  <td>$<%= number_with_delimiter(coin[:current_price].round(2), :delimiter => ',') %></td>
+                  <td style="color: <%= colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
                 </tr>
 
               <% end %>

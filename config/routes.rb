@@ -22,11 +22,11 @@ Rails.application.routes.draw do
   end
 
   resources :wallets, only: [] do
-    resources :strategys, only: [:update, :edit]
+    resources :assets, only: [:update, :edit]
   end
-  resources :strategys, only: [] do
-    resources :coin_shares, only: [:index, :create]
-  end
-  resources :coin_shares, only: [:update, :destroy]
+  # resources :strategys, only: [] do
+  #   resources :coin_shares, only: [:index, :create]
+  # end
+  # resources :coin_shares, only: [:update, :destroy]
 
 end

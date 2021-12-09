@@ -827,6 +827,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 0 0 0;
 }
 
+th {
+  font-weight: 700 !important;
+  color: #444444;
+}
+
+td {
+  font-weight: 500 !important;
+  color: #444444;
+}
+
 /* Top Selling */
 .dashboard .top-selling {
   font-size: 14px;
