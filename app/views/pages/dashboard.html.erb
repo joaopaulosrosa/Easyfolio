@@ -41,13 +41,18 @@
 
             <div class="card-body">
 
-              <h5 class="card-title"> Coins <span>| owned</span></h5>
+              <div class="d-flex justify-content-between">
+
+                <h5 class="card-title"> Coins <span>| owned</span></h5>
+
+              </div>
+
 
               <!-- Wallets - Assets -->
               <div class="tab-content" id="nav-tabContent">
-
                 <% @wallets.each do |wallet| %>
                   <% total = [] %>
+
                   <div class="<%= wallet == @wallets.first ? "tab-pane fade show active" : "tab-pane fade" %>" id="nav-<%= wallet.name %>" role="tabpanel" aria-labelledby="nav-<%= wallet.name %>-tab">
 
                     <table class="table table-borderless datatable">
@@ -62,6 +67,9 @@
                           <th scope="col">Current Price</th>
                           <th scope="col">Value (U$)</th>
                           <th scope="col">24h</th>
+                          <%= link_to new_wallet_asset_path(wallet) do %>
+                            <p>add an asset</p>
+                          <% end %>
 
                         </tr>
 

@@ -34,12 +34,12 @@
                     <tr>
 
                       <% coin = coin(@data, @asset) %>
-                      <th><%= coin[:symbol].upcase %></th>
-                      <th><%= coin[:name] %></th>
-                      <th><%= @asset.amount %></th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
+                      <td><%= coin[:symbol].upcase %></td>
+                      <td><%= coin[:name] %></td>
+                      <td><%= @asset.amount.round(2) %></td>
+                      <td>$<%= number_with_delimiter(coin[:current_price].round(2), :delimiter => ',') %></td>
+                      <td>$<%= number_with_delimiter((@asset.amount.round(2)*coin[:current_price]).round(2), :delimiter => ',') %></td>
+                      <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
 
                     </tr>
 

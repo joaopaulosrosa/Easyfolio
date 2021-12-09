@@ -1,5 +1,22 @@
 class AssetsController < ApplicationController
-  before_action :find_asset
+  before_action :find_asset, except: [ :new, :create]
+  before_action :set_wallet, only: [ :new, :create]
+
+  def new
+    @asset = Asset.new
+    authorize @asset
+  end
+
+  def create
+     @asset = Asset.new(asset_params)
+     @asset.wallet = @wallet
+     authorize @asset
+    if @asset.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
 
   def edit
     authorize @asset
@@ -20,6 +37,10 @@ class AssetsController < ApplicationController
     @asset = Asset.find(params[:id])
   end
 
+  def set_wallet
+    @wallet = Wallet.find(params[:wallet_id])
+  end
+
   def api_json(url)
     data = HTTParty.get(url).body
     JSON.parse(data)
@@ -30,6 +51,6 @@ class AssetsController < ApplicationController
   end
 
   def asset_params
-    params.require(:asset).permit(:amount)
+    params.require(:asset).permit(:amount, :coin_ticker)
   end
 end

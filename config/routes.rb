@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :wallets, only: [ :new, :create, :destroy ] do
-      resources :assets, only: [ :create, :destroy ]
+      # resources :assets, only: [ :create, :destroy ]
     end
   end
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :wallets, only: [] do
-    resources :assets, only: [:update, :edit]
+    resources :assets, only: [ :new, :create,:edit, :update ]
   end
   # resources :strategys, only: [] do
   #   resources :coin_shares, only: [:index, :create]

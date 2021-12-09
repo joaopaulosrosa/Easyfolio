@@ -10,6 +10,14 @@ class AssetPolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    true
+  end
+
+  def create?
+    true
+  end
+
   def edit?
     true
   end
