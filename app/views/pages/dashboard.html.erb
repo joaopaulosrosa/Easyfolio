@@ -87,7 +87,7 @@
                             <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
                             <td>
                               <%= asset.amount.round(2) %> |
-                              <%= link_to edit_wallet_asset_path(asset, wallet) do%>
+                              <%= link_to edit_wallet_asset_path(wallet, asset) do%>
                                 <i class="fas fa-edit"></i>
                               <% end %>
 
