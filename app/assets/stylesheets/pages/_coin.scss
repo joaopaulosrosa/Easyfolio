@@ -1,0 +1,81 @@
+.price {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.price-info {
+  width: 35%;
+  padding: 7.5px 10px;
+  height: 140px;
+  width: 180px;
+  border: 0.5px solid rgb(215, 215, 215);
+}
+
+.wide {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-info h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+.price-info p {
+  font-family: 'Poppins';
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #575757;
+  display: contents;
+}
+
+.black {
+  color: black !important;
+  font-size: 14px !important;
+  margin: 10px 0 17.5px 0px !important;
+  text-align: right;
+}
+
+.percentage {
+  float: right;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-left: 7.5px;
+  align-items: center;
+}
+
+.percentage p {
+  margin: 0;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.percentage i {
+  color: white;
+  margin-top: 10px;
+  margin-right: 7.5px;
+}
+
+.fa-sort-down {
+  transform: scaleX(10px);
+}
+
+
+
+#link {
+  font-family: 'Poppins';
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#trade-btn {
+  color: white !important;
+  background-color: #31579a;
+}

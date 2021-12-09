@@ -22,8 +22,8 @@ before_action :get_wallet, only: [:show, :destroy]
     @wallet.user = current_user
     authorize @wallet
     if @wallet.save
-      Strategy.new()
-      Strategy.wallet = @wallet
+      @strategy = Strategy.new()
+      @strategy.wallet = @wallet
       redirect_to '/dashboard'
     else
       render :new

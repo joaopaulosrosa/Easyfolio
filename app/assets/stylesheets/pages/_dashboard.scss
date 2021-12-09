@@ -224,6 +224,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
   overflow: hidden;
+  background-color: rgb(249, 249, 249) !important;
+  overflow: visible;
 }
 
 .card-header, .card-footer {
@@ -611,27 +613,24 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #012970;
   transition: 0.3;
-  background: #f6f9ff;
   padding: 10px 15px;
   border-radius: 4px;
 }
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #012970;
 }
 .sidebar-nav .nav-link.collapsed {
   color: #012970;
-  background: #fff;
 }
 .sidebar-nav .nav-link.collapsed i {
   color: #899bbd;
 }
 .sidebar-nav .nav-link:hover {
   color: #4154f1;
-  background: #f6f9ff;
 }
 .sidebar-nav .nav-link:hover i {
   color: #4154f1;
@@ -826,6 +825,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dashboard .recent-sales .dataTable-bottom {
   padding: 10px 0 0 0;
+}
+
+th {
+  font-weight: 700 !important;
+  color: #444444;
+}
+
+td {
+  font-weight: 500 !important;
+  color: #444444;
 }
 
 /* Top Selling */
