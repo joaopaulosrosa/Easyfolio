@@ -16,7 +16,9 @@
             <button class="<%= wallet == @wallets.first ? "nav-link active" : "nav-link" %>" id="nav-<%= wallet.name %>-tab" data-bs-toggle="tab" data-bs-target="#nav-<%= wallet.name %>" type="button" role="tab" aria-controls="nav-<%= wallet.name %>" aria-selected="true"><%= wallet.name %></button>
           <% end %>
 
-          <%= link_to '+', new_user_wallet_path(current_user) %>
+          <%= link_to new_user_wallet_path(current_user) do %>
+            <p id="plus">+</p>
+          <% end %>
 
         </div>
         <!-- End - Wallets - Tabs -->
@@ -92,7 +94,7 @@
                               <% end %>
 
                             </td>
-                            <td>$<%= coin[:current_price].round(2) %></td>
+                            <td>$<%= number_with_delimiter(coin[:current_price].round(2), :delimiter => ',') %></td>
                             <td>$<%= number_with_delimiter((asset.amount.round(2)*coin[:current_price]).round(2), :delimiter => ',') %></td>
                             <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
 
