@@ -16,11 +16,11 @@
             <thead>
 
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">Ticker</th>
                 <th scope="col">Coin</th>
                 <th scope="col">Market Cap</th>
                 <th scope="col">Curren Price</th>
-                <th scope="col">24h %</th>
+                <th scope="col">24H Change</th>
               </tr>
 
             </thead>
@@ -30,12 +30,11 @@
 
                 <% coin = @data.select{ |key| key["symbol"].downcase == ticker || key["name"].downcase == ticker}.first.transform_keys(&:to_sym) %>
                 <tr class='handle'>
-                  <th scope="row"><a href="#"></a><%= coin[:symbol] %></th>
-                  <td><%= coin[:name] %></td>
-                  <td><%= coin[:market_cap] %></td>
-                  <td><%= coin[:current_price].round(2) %></td>
-                  <% @color = coin[:price_change_percentage_24h].positive? ? "color: green" : "color: red" %>
-                  <td style="<%=@color%>"><%= coin[:price_change_percentage_24h].round(2) %></td>
+                  <th scope="row"><%= coin[:symbol].upcase %></th>
+                  <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
+                  <td>$<%= number_with_delimiter(coin[:market_cap].round(2), :delimiter => ',') %></td>
+                  <td>$<%= number_with_delimiter(coin[:current_price].round(2), :delimiter => ',') %></td>
+                  <td style="color: <%= colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
                 </tr>
 
               <% end %>

@@ -41,13 +41,18 @@
 
             <div class="card-body">
 
-              <h5 class="card-title"> Coins <span>| owned</span></h5>
+              <div class="d-flex justify-content-between">
+
+                <h5 class="card-title"> Coins <span>| owned</span></h5>
+
+              </div>
+
 
               <!-- Wallets - Assets -->
               <div class="tab-content" id="nav-tabContent">
-
                 <% @wallets.each do |wallet| %>
                   <% total = [] %>
+
                   <div class="<%= wallet == @wallets.first ? "tab-pane fade show active" : "tab-pane fade" %>" id="nav-<%= wallet.name %>" role="tabpanel" aria-labelledby="nav-<%= wallet.name %>-tab">
 
                     <table class="table table-borderless datatable">
@@ -61,6 +66,10 @@
                           <th scope="col">Amount</th>
                           <th scope="col">Current Price</th>
                           <th scope="col">Value (U$)</th>
+                          <th scope="col">24h</th>
+                          <%= link_to new_wallet_asset_path(wallet) do %>
+                            <p>add an asset</p>
+                          <% end %>
 
                         </tr>
 
@@ -74,11 +83,18 @@
                           <% total.push((asset.amount*coin[:current_price]).round(2)) %>
                           <tr>
 
-                            <th scope="row"><a href="#"><%= asset.coin_ticker %></a></th>
-                            <td><%= coin[:name] %></td>
-                            <td><%= asset.amount.round(2) %></td>
-                            <td><%= coin[:current_price].round(2) %></td>
-                            <td><%= asset.amount.round(2)*coin[:current_price].round(2) %></td>
+                            <th scope="row"><%= asset.coin_ticker.upcase %></th>
+                            <td><a href="/coin?query=<%= coin[:name] %>"><%= coin[:name] %></a></td>
+                            <td>
+                              <%= asset.amount.round(2) %> |
+                              <%= link_to edit_wallet_asset_path(wallet, asset) do%>
+                                <i class="fas fa-edit"></i>
+                              <% end %>
+
+                            </td>
+                            <td>$<%= coin[:current_price].round(2) %></td>
+                            <td>$<%= number_with_delimiter((asset.amount.round(2)*coin[:current_price]).round(2), :delimiter => ',') %></td>
+                            <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
 
                           </tr>
                         <% end %>
@@ -99,7 +115,7 @@
 
                           <div class="ps-3">
 
-                            <h6>$<%= total.sum.round(2) %></h6>
+                            <h6>$<%= number_with_delimiter(total.sum.round(2), :delimiter => ',') %></h6>
                             <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -147,23 +163,8 @@
     <div class="col-lg-4">
 
       <!-- Market Overall -->
-      <div class="card">
-        <div class="card-body ">
-          <h5 class="card-title">Wallet's Allocation<span> | <%= link_to 'Manage', edit_wallet_strategy_path(@wallets.first, @wallets.first.strategy)%></span></h5>
-          <div class="d-flex justify-content-around">
-            <div class="strategy">
-              <% @wallets.first.strategy.coin_shares.each do |coin| %>
-                <p><strong><%= coin.coin_ticker %></strong> - <%= coin.coin_share %></p>
-                <% end %>
-            </div>
-            <div class="flex-item">
-              <% @wallets.first.assets.each do |asset| %>
-                <p><strong><%= asset.coin_ticker %></strong> - <%= ((asset.amount*coin(@data, asset)[:current_price] / total_wallet(@wallets.first, @data)) * 100).round(2) %></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
       <!-- End Market Overall -->
 
     </div>

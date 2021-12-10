@@ -1,0 +1,67 @@
+<section class="section dashboard p-0">
+
+  <div class="row">
+
+    <div class="col-lg-8">
+
+        <div class="row">
+
+          <div class="col-12">
+
+            <div class="card recent-sales">
+
+              <div class="card-body">
+
+                <table>
+
+                  <thead class="table table-borderless datatable">
+
+                    <tr>
+
+                      <th scope="col">#</th>
+                      <th scope="col">Coin</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Current Price</th>
+                      <th scope="col">Value (U$)</th>
+                      <th scope="col">24h</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+
+                      <% coin = coin(@data, @asset) %>
+                      <td><%= coin[:symbol].upcase %></td>
+                      <td><%= coin[:name] %></td>
+                      <td><%= @asset.amount.round(2) %></td>
+                      <td>$<%= number_with_delimiter(coin[:current_price].round(2), :delimiter => ',') %></td>
+                      <td>$<%= number_with_delimiter((@asset.amount.round(2)*coin[:current_price]).round(2), :delimiter => ',') %></td>
+                      <td style="color:<%=colorful_percentage(coin[:price_change_percentage_24h])%>"><%= coin[:price_change_percentage_24h].round(2) %>%</td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+  <%= simple_form_for [@asset.wallet, @asset] do |f| %>
+  <%= f.input :amount %>
+  <%= f.submit %>
+<% end %>
+
+</section>

@@ -2,7 +2,7 @@
 
   <div class="pagetitle">
 
-    <h1>Explore</h1>
+    <h1>Explore new coins</h1>
 
   </div><!-- End Page Title -->
 
@@ -11,7 +11,7 @@
     <!-- Left side columns -->
     <div class="col-8">
 
-      <div class="card">
+      <div class="card recent-sales">
 
         <div class="card-body">
 
@@ -26,9 +26,9 @@
                 <th scope="col">#</th>
                 <th scope="col">Coin</th>
                 <th scope="col">Current Price</th>
-                <th scope="col">24h (%)</th>
+                <th scope="col">All Time High</th>
                 <th scope="col">Market Cap</th>
-                <th scope="col">Last 7 days</th>
+                <th scope="col">24h (%)</th>
 
               </tr>
 
@@ -39,14 +39,12 @@
               <% @top10.each do |coin| %>
                 <tr>
 
-                  <th scope="row"><a href="#"><%= coin['market_cap_rank'] %></a></th>
-                  <td><%= coin['name'] %></td>
-                  <td><%= coin['current_price'] %></td>
-                  <td style="<%= coin['price_change_percentage_24h'].positive? ? "color: green" : "color: red" %>"><%= coin['price_change_percentage_24h'].round(2) %>%</td>
-                  <td><%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>
-                  <td>
-
-                  </td>
+                  <th scope="row"><%= coin['market_cap_rank'] %></th>
+                  <td><a href="/coin?query=<%= coin['name'] %>"><%= coin['name'] %></a></td>
+                  <td>$<%= coin['current_price'] %></td>
+                  <td> $<%= number_with_delimiter(coin['ath'].round(2), :delimiter => ',') %> </td>
+                  <td>$<%= number_with_delimiter(coin['market_cap'], :delimiter => ',')%></td>
+                  <td style="color: <%= colorful_percentage(coin['price_change_percentage_24h'])%>"><%= coin['price_change_percentage_24h'].round(2) %>%</td>
 
                 </tr>
               <% end %>
@@ -81,7 +79,7 @@
             <ul id="results" class="list-group"></ul>
             <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
           <% end %>
-
+          
         </div>
         <%= render 'shared/flashes' %>
       </div>
