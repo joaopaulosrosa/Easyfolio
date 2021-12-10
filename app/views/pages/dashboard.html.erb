@@ -16,7 +16,9 @@
             <button class="<%= wallet == @wallets.first ? "nav-link active" : "nav-link" %>" id="nav-<%= wallet.name %>-tab" data-bs-toggle="tab" data-bs-target="#nav-<%= wallet.name %>" type="button" role="tab" aria-controls="nav-<%= wallet.name %>" aria-selected="true"><%= wallet.name %></button>
           <% end %>
 
-          <%= link_to '+', new_user_wallet_path(current_user) %>
+          <%= link_to new_user_wallet_path(current_user) do %>
+            <p id="plus">+</p>
+          <% end %>
 
         </div>
         <!-- End - Wallets - Tabs -->
